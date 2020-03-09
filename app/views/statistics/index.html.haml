@@ -1,0 +1,60 @@
+- content_for :page_title, 'Statistics'
+
+%section#statistics
+  %header.page_head
+    %h1 Statistics
+  .wrapper
+    %article
+      %header
+        %h1 Last 30 days
+      %ul.activity_chart#activity
+        - posts_per_day.each do |ppd|
+          %li(data-date="#{ppd.label}" data-amount="#{ppd.count}" class="#{if ppd.count == 1 then 'singular' end}")
+            .activity_chart_bar(style="height: #{(ppd.count.to_f/highest_count_last_30_days) * 100}%")
+    %article
+      %header
+        %h1 Hottest TILs
+      %ul.post_list
+        - hot_posts.each do |hp|
+          %li
+            = link_to post_path hp do
+              %b
+                = hp.title
+              %small
+                \##{hp.channel.name}
+                %span •
+                #{pluralize(hp.likes, 'like')}
+    %article
+      %header
+        %h1 Most liked TILs
+      %ul.post_list
+        - top_ten.each do |tt|
+          %li
+            = link_to post_path tt do
+              %b
+                = tt.title
+              %small
+                \##{tt.channel.name}
+                %span •
+                #{pluralize(tt.likes, 'like')}
+    .stats_column
+      %article
+        %header
+          %h1 #{pluralize channels.sum(&:count), "post"} in #{pluralize channels.count, "channel"}
+        %ul.post_list#channels
+          - channels.each do |stat|
+            %li
+              = link_to channel_path stat.label do
+                %b ##{stat.label}
+                %small #{pluralize(stat.count, 'post')}
+
+    .stats_column.right
+      %article
+        %header
+          %h1 #{pluralize authors.count, "author"}
+        %ul.post_list#authors
+          - authors.each do |stat|
+            %li
+              = link_to developer_path stat.label do
+                %b= stat.label
+                %small #{pluralize(stat.count, 'post')}

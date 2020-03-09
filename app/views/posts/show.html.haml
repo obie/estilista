@@ -1,0 +1,25 @@
+- content_for :page_title, @post.title
+
+- content_for :canonical do
+  %link{rel: 'canonical', href: post_url(@post)}
+
+- content_for :post_nav do
+  - if @post.published? && multiple_posts?
+    %nav.pagination
+      - unless oldest_post? @post
+        = link_to previous_post(@post), class: "pagination_newer" do
+          previous TIL
+      - unless newest_post? @post
+        = link_to next_post(@post), class: "pagination_older" do
+          next TIL
+
+- content_for :social do
+  - if @post.published?
+    = tweet_link(@post)
+
+%section#post_show
+  = render @post
+
+- dynamic_path = "more_info/#{@post.channel.name}"
+- if display_more_info?(@post, dynamic_path)
+  = render dynamic_path

@@ -1,0 +1,60 @@
+!!! 5
+%html(lang="en-US")
+  %head
+    %title= "#{SITE_NAME}"
+    = stylesheet_link_tag 'application', media: 'all'
+    = csrf_meta_tags
+    %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1")
+    %link(href='http://fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css')
+    %link(href='http://fonts.googleapis.com/css?family=Lora:400,700italic,700,400italic|Limelight' rel='stylesheet' type='text/css')
+    = yield :head
+  %body
+
+    .sticker
+      1000
+      %span Posts
+
+    %nav.admin_panel
+      %ul
+        %li= link_to Phil.name, "#"
+        %li= link_to "create post", "#"
+        %li= link_to "drafts", "#"
+        %li= link_to "sign out", "#"
+
+    %header.site_head
+      %div
+        %h1= link_to "Today I learned", "#"
+        %h2= link_to "A Hashrocket project", "#"
+
+    -# #flash
+    -#   %p.notice= Phil.words 20
+    -#   %p.error= Phil.words 20
+
+    %main= yield
+
+    %nav.site_nav
+      %ul
+        %li.site_nav__about
+          = link_to "About TIL", "#", class: "site_nav__link"
+          .site_nav__toggle
+            .copy
+              :markdown
+                TIL is an open-source project by
+                [Hashrocket](https://hashrocket.com) that exists to catalogue
+                the sharing & accumulation of knowledge as it happens
+                day-to-day. Posts have a 200-word limit, and posting is open to
+                any Rocketeer as well as selected friends of Hashrocket. We
+                hope you enjoy learning along with us.
+              %ul.social
+                %li= link_to "/hashrockettil", "http://twitter.com/hashrockettil", class: "social_twitter"
+                %li= link_to "/hashrockettil", "http://github.com/hashrockettil", class: "social_github"
+        %li.site_nav__statistics
+          = link_to "statistics", "#", class: "site_nav__link"
+        %li.site_nav__search
+          %form<
+            = link_to "search", "#", class: "site_nav__link"
+            .site_nav__toggle
+              %input(type='search')
+              %input(type='submit' value='Search')
+
+    = javascript_include_tag 'application'

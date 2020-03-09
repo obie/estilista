@@ -1,0 +1,4 @@
+#flash
+  - if flash.present?
+    - flash.to_h.slice('notice', 'alert').each do |key, message|
+      %p{class: key}= message

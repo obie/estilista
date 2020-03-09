@@ -1,0 +1,6 @@
+<%=raw @post.title %>
+
+<%=raw @post.body %>
+
+<%= @post.author.name %>
+<%= @post.display_date.strftime("%B %-e, %Y") %>

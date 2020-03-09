@@ -1,0 +1,11 @@
+- content_for :page_title, "Posts by #{developer.username}"
+%section#author
+  %header.page_head
+    %h1
+      #{pluralize developer.posts_count, "post"}
+      by #{developer.username}
+      - handle = developer.twitter_handle
+      - if handle
+        = link_to "@#{handle}", "https://twitter.com/#{handle}", class: "author_twitter", target: "_blank"
+
+= render posts

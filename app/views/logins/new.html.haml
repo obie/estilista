@@ -1,0 +1,7 @@
+.row
+  .col-md-6.offset-md-3
+    %h1 Sign In
+
+    = simple_form_for :login do |f|
+      = f.input :email, type: 'email', label: "Enter your email and we'll send you a link to access the app", autofocus: true, required: true
+      = f.submit "Give me a sign in link", class: "btn btn-primary btn-block"

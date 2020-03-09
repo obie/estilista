@@ -1,0 +1,15 @@
+.row
+  .col-md-6.offset-md-3
+    %h1 Uh-oh that link did not work
+    .my-2
+      = image_tag 'sadpanda.gif', class: 'img-fluid'
+
+    %h2 Probably you've used it to login already or it's too old
+    %p
+      We expire login links after an hour and also after you use them once, to
+      make sure that we keep access to your journal private from nosy people and hackers.
+
+    %p
+      %strong
+        You can
+        = link_to "request a fresh login link", login_url
