@@ -15,3 +15,12 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import 'bootstrap'
+
+// stylesheets
+import 'stylesheets/mercury';
+import 'stylesheets/normalize';
+import 'stylesheets/cask';
+import 'stylesheets/reset';
+import 'stylesheets/main'

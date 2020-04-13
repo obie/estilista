@@ -10,6 +10,7 @@
     %link(href='//fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css')
     %link(href='//fonts.googleapis.com/css?family=Lora:400,700italic,700,400italic' rel='stylesheet' type='text/css')
 
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
     =# favicon_link_tag 'favicon.png'
